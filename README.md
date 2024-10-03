@@ -1,6 +1,6 @@
 # Monkey
 
-Monkey is a toy programming language. It is a dynamically typed language with a C-like syntax. And, this prject, is a interpreter for the Monkey programming language.
+Monkey is a toy programming language that is dynamically typed and has a C-like syntax. This project is an interpreter for the Monkey programming language.
 
 It is based on the book [Writing An Interpreter In Go](https://interpreterbook.com/).
 
