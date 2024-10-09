@@ -298,8 +298,17 @@ func TestBuiltinFunctions(t *testing.T) {
 		{`len("")`, 0},
 		{`len("four")`, 4},
 		{`len("hello world")`, 11},
+		{`len([1, 2, 3, 4])`, 4},
 		{`len(1)`, "argument to `len` not supported, got INTEGER"},
 		{`len("one", "two")`, "wrong number of arguments. got=2, want=1"},
+		{`first([1, 2, 3, 4])`, 1},
+		{`last([1, 2, 3, 4])`, 4},
+		{`rest([1, 2, 3, 4])`, []int64{2, 3, 4}},
+		{`
+			let a = [1, 2, 3, 4];
+			let b = rest(a);
+			b;
+		`, []int64{2, 3, 4}},
 	}
 
 	for _, tt := range tests {
