@@ -1,14 +1,20 @@
-let map = fn(arr, f) {
-    let iter = fn(arr, accumulated) {
-        if (len(arr) == 0) {
-            accumulated
-        } else {
-            iter(rest(arr), push(accumulated, f(first(arr))))
-        }
-    };
-    iter(arr, []);
-};
+let to_integer = fn(proc) { proc(fn(x) { x + 1 })(0) };
 
-let a = [1, 2, 3, 4];
-let double = fn(x) { x * 2 };
-map(a, double); 
+
+let ZERO = fn(f) { fn(x) { x } }; 
+let ONE = fn(f) { fn(x) { f(x) } };
+let TWO = fn(f) { fn(x) { f(f(x)) } };
+let THREE = fn(f) { fn(x) { f(f(f(x))) } };
+
+let TRUE = fn(x) { fn(y) { x } };
+let FALSE = fn(x) { fn(y) { y } };
+
+let EXP = fn(m) { fn(n) { m(n) } };
+let SUCC = fn(n) { fn(f) { fn(x) { f(n(f)(x)) } } };
+
+puts(to_integer(TWO));
+puts("succ one: ", to_integer(SUCC(ONE)));
+puts("exp two three: ", to_integer(EXP(TWO)(THREE)));
+puts("number 10: ", to_integer(fn(f) { fn(x) { f(f(f(f(f(f(f(f(f(f(x)))))))))) } }));
+
+let to_boolean = fn(proc) { proc(true)(false) };
