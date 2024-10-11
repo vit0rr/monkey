@@ -109,7 +109,7 @@ var builtins = map[string]*object.Builtin{
 			}
 
 			fmt.Println()
-			return NULL
+			return nil
 		},
 	},
 }
