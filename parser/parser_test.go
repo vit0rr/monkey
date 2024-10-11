@@ -862,6 +862,26 @@ func TestBooleanExpression(t *testing.T) {
 	testBoolean(t, stmt.Expression, true)
 }
 
+func TestParsingComments(t *testing.T) {
+	input := `
+	// This is a comment
+	let x = 5;
+	// This is another comment
+	let y = 10;
+	// This is the last comment
+	`
+
+	l := lexer.New(input)
+	p := New(l)
+	program := p.ParseProgram()
+	checkParserErrors(t, p)
+
+	if len(program.Statements) != 2 {
+		t.Fatalf("program.Body does not contain %d statements. got=%d",
+			2, len(program.Statements))
+	}
+}
+
 func testLiteralExpression(
 	t *testing.T,
 	exp ast.Expression,

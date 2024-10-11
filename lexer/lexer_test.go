@@ -30,6 +30,7 @@ func TestNextToken(t *testing.T) {
 	"foo bar"
 	[1, 2];
 	{"foo": "bar"}
+	// this is a comment
 `
 
 	tests := []struct {

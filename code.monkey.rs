@@ -12,9 +12,10 @@ let FALSE = fn(x) { fn(y) { y } };
 let EXP = fn(m) { fn(n) { m(n) } };
 let SUCC = fn(n) { fn(f) { fn(x) { f(n(f)(x)) } } };
 
+// this line will be ignored because it's a comment
+
+
 puts(to_integer(TWO));
-puts("succ one: ", to_integer(SUCC(ONE)));
+// puts("succ one: ", to_integer(SUCC(ONE)));
 puts("exp two three: ", to_integer(EXP(TWO)(THREE)));
 puts("number 10: ", to_integer(fn(f) { fn(x) { f(f(f(f(f(f(f(f(f(f(x)))))))))) } }));
-
-let to_boolean = fn(proc) { proc(true)(false) };
