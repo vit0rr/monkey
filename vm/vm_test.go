@@ -80,7 +80,7 @@ func TestIntegerArithmetic(t *testing.T) {
 	tests := []vmTestCase{
 		{"1", 1},
 		{"2", 2},
-		{"1 + 2", 2}, // I only have OpConstant defined. So, just returning a constant - for now.
+		{"1 + 2", 3},
 	}
 
 	runVmTests(t, tests)
