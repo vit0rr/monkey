@@ -8,7 +8,12 @@ It is based on the book [Writing An Interpreter In Go](https://interpreterbook.c
 ```bash
 $ go run main.go
 # or if you want to run a file
-$ go run main.go <filename>.monkey
+$ go run main.go -file <filename>.monkey
+```
+
+To learn more about available commands:
+```bash
+$ go run main.go -help
 ```
 
 ## Features
