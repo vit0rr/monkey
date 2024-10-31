@@ -91,8 +91,8 @@ func runFile(filePath string, useCompiler bool) error {
 			return fmt.Errorf("woops! Executing bytecode failed:\n %s", err)
 		}
 
-		stackTop := machine.StackTop()
-		io.WriteString(os.Stdout, stackTop.Inspect())
+		lastPopped := machine.LastPoppedStackElem()
+		io.WriteString(os.Stdout, lastPopped.Inspect())
 		io.WriteString(os.Stdout, "\n")
 
 		return nil
