@@ -8,6 +8,9 @@ import (
 	"github.com/vit0rr/mumu/object"
 )
 
+var True = &object.Boolean{Value: true}
+var False = &object.Boolean{Value: false}
+
 const StackSize = 2048
 
 type VM struct {
@@ -52,6 +55,18 @@ func (vm *VM) Run() error {
 
 		case code.OpAdd, code.OpSub, code.OpMul, code.OpDiv:
 			err := vm.executeBinaryOperation(op)
+			if err != nil {
+				return err
+			}
+
+		case code.OpTrue:
+			err := vm.push(True)
+			if err != nil {
+				return err
+			}
+
+		case code.OpFalse:
+			err := vm.push(False)
 			if err != nil {
 				return err
 			}
