@@ -316,12 +316,22 @@ func evalInfixExpression(operator string, left, right object.Object) object.Obje
 	case operator == "!=":
 		return nativeBoolToBooleanObject(left != right)
 
+	case operator == "||":
+		return evalOrInfixExpression(left, right)
+
 	case left.Type() != right.Type():
 		return newError("type mismatch: %s %s %s", left.Type(), operator, right.Type())
 
 	default:
 		return newError("unknown operator: %s %s %s", left.Type(), operator, right.Type())
 	}
+}
+
+func evalOrInfixExpression(left, right object.Object) object.Object {
+	leftVal := left.(*object.Boolean).Value
+	rightVal := right.(*object.Boolean).Value
+
+	return nativeBoolToBooleanObject(leftVal || rightVal)
 }
 
 func evalStringInfixExpression(operator string, left, right object.Object) object.Object {
