@@ -207,6 +207,7 @@ func TestParsingInfixExpressions(t *testing.T) {
 		{"5 < 5;", 5, "<", 5},
 		{"5 == 5;", 5, "==", 5},
 		{"5 != 5;", 5, "!=", 5},
+		{"true || false", true, "||", false},
 	}
 
 	for _, tt := range infixTests {
