@@ -85,6 +85,8 @@ func (c *Compiler) Compile(node ast.Node) error {
 			c.emit(code.OpEqual)
 		case "!=":
 			c.emit(code.OpNotEqual)
+		case "||":
+			c.emit(code.OpOr)
 		default:
 			return fmt.Errorf("unknow operador %s", node.Operator)
 		}
